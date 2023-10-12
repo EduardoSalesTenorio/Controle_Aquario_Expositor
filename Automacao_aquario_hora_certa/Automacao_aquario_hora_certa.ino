@@ -287,6 +287,8 @@ void setup() {
       delay(200);
       digitalWrite(expositorLed3, LOW);
     }
+
+    digitalWrite(exposaitorLed4, LOW);
     server.send(200, "text/html", "LesdPiscando");
   });
 
@@ -579,7 +581,7 @@ void ligarDesligarAquario() {
     digitalWrite(ledAquarioPin, HIGH);
     digitalWrite(bombaPin, HIGH);
 
-    if (bombaInternaOnOf) {
+    if (bombaInternaOnOf && currentHour >= 14) {
       digitalWrite(bombaInternaPin, HIGH);
     }
   } else {
