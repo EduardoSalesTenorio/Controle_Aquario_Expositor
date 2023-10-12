@@ -46,7 +46,7 @@ void setup() {
   pinMode(expositorLed3, OUTPUT);
   pinMode(expositorLed4, OUTPUT);
 
-  randomSeed(analogRead(0)); // Inicializa a semente do gerador de números aleatórios
+  randomSeed(analogRead(0));  // Inicializa a semente do gerador de números aleatórios
 
   Serial.begin(9600);
   while (!Serial)
@@ -216,8 +216,8 @@ void setup() {
     server.send(200, "text/html", "LesdPiscando");
   });
 
-// Padrão 2: LEDs piscam em sequência
-    server.on("/piscamSequencia", HTTP_GET, []() {
+  // Padrão 2: LEDs piscam em sequência
+  server.on("/piscamSequencia", HTTP_GET, []() {
     for (int i = 0; i < 5; i++) {
 
       digitalWrite(expositorLed1, HIGH);
@@ -245,7 +245,7 @@ void setup() {
 
   // Padrão 3: LEDs piscam em grupos
 
-server.on("/piscamGrupo", HTTP_GET, []() {
+  server.on("/piscamGrupo", HTTP_GET, []() {
     for (int i = 0; i < 5; i++) {
 
       digitalWrite(expositorLed1, HIGH);
@@ -266,7 +266,7 @@ server.on("/piscamGrupo", HTTP_GET, []() {
   });
 
 
-server.on("/piscamDescendo", HTTP_GET, []() {
+  server.on("/piscamDescendo", HTTP_GET, []() {
     for (int i = 0; i < 5; i++) {
 
       delay(200);
@@ -286,10 +286,61 @@ server.on("/piscamDescendo", HTTP_GET, []() {
 
       delay(200);
       digitalWrite(expositorLed3, LOW);
-      
     }
     server.send(200, "text/html", "LesdPiscando");
   });
+
+  server.on("/idaVolta", HTTP_GET, []() {
+    for (int i = 0; i < 5; i++) {
+
+      digitalWrite(expositorLed1, HIGH);
+      delay(200);
+      digitalWrite(expositorLed2, HIGH);
+      delay(200);
+      digitalWrite(expositorLed3, HIGH);
+      delay(200);
+      digitalWrite(expositorLed4, HIGH);
+      delay(800);
+
+      digitalWrite(expositorLed4, LOW);
+      delay(200);
+      digitalWrite(expositorLed3, LOW);
+      delay(200);
+      digitalWrite(expositorLed2, LOW);
+      delay(200);
+      digitalWrite(expositorLed1, LOW);
+      delay(200);
+    }
+    server.send(200, "text/html", "LesdPiscando");
+  });
+
+
+  server.on("/vaiVem", HTTP_GET, []() {
+    for (int i = 0; i < 5; i++) {
+
+      digitalWrite(expositorLed1, HIGH);
+      delay(200);
+      digitalWrite(expositorLed2, HIGH);
+      delay(200);
+      digitalWrite(expositorLed3, HIGH);
+      delay(200);
+      digitalWrite(expositorLed4, HIGH);
+      delay(800);
+
+      digitalWrite(expositorLed1, LOW);
+      delay(200);
+      digitalWrite(expositorLed2, LOW);
+      delay(200);
+      digitalWrite(expositorLed3, LOW);
+      delay(200);
+      digitalWrite(expositorLed4, LOW);
+      delay(600);
+    }
+    server.send(200, "text/html", "LesdPiscando");
+  });
+
+
+
 
 
 
