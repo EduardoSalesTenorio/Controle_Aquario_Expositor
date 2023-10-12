@@ -340,7 +340,80 @@ void setup() {
   });
 
 
+  server.on("/idaVoltaInverso", HTTP_GET, []() {
+    for (int i = 0; i < 5; i++) {
 
+      digitalWrite(expositorLed4, HIGH);
+      delay(200);
+      digitalWrite(expositorLed3, HIGH);
+      delay(200);
+      digitalWrite(expositorLed2, HIGH);
+      delay(200);
+      digitalWrite(expositorLed1, HIGH);
+      delay(800);
+
+      digitalWrite(expositorLed1, LOW);
+      delay(200);
+      digitalWrite(expositorLed2, LOW);
+      delay(200);
+      digitalWrite(expositorLed3, LOW);
+      delay(200);
+      digitalWrite(expositorLed4, LOW);
+      delay(200);
+    }
+    server.send(200, "text/html", "LesdPiscando");
+  });
+
+
+  server.on("/vaiVemInverso", HTTP_GET, []() {
+    for (int i = 0; i < 5; i++) {
+
+      digitalWrite(expositorLed4, HIGH);
+      delay(200);
+      digitalWrite(expositorLed3, HIGH);
+      delay(200);
+      digitalWrite(expositorLed2, HIGH);
+      delay(200);
+      digitalWrite(expositorLed1, HIGH);
+      delay(800);
+
+      digitalWrite(expositorLed4, LOW);
+      delay(200);
+      digitalWrite(expositorLed3, LOW);
+      delay(200);
+      digitalWrite(expositorLed2, LOW);
+      delay(200);
+      digitalWrite(expositorLed1, LOW);
+      delay(600);
+    }
+    server.send(200, "text/html", "LesdPiscando");
+  });
+
+  server.on("/piscamSequenciaInverso", HTTP_GET, []() {
+    for (int i = 0; i < 5; i++) {
+
+      digitalWrite(expositorLed4, HIGH);
+      delay(200);
+      digitalWrite(expositorLed4, LOW);
+      delay(200);
+
+      digitalWrite(expositorLed3, HIGH);
+      delay(200);
+      digitalWrite(expositorLed3, LOW);
+      delay(200);
+
+      digitalWrite(expositorLed2, HIGH);
+      delay(200);
+      digitalWrite(expositorLed2, LOW);
+      delay(200);
+
+      digitalWrite(expositorLed1, HIGH);
+      delay(200);
+      digitalWrite(expositorLed1, LOW);
+      delay(200);
+    }
+    server.send(200, "text/html", "LesdPiscando");
+  });
 
 
 
